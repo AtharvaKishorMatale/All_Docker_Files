@@ -1,0 +1,16 @@
+services:
+  mydb:
+    build:
+     context: .
+     dockerfile: Dockerfile
+  mycont:
+   image: wordpress
+   environment:
+     WORDPRESS_DB_HOST: mydb
+     WORDPRESS_DB_USER: root
+     WORDPRESS_DB_PASSWORD: Pass@123
+     WORDPRESS_DB_NAME: okm
+   ports:
+    - 80:80
+   depends_on:
+    - mydb
